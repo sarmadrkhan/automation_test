@@ -1,9 +1,7 @@
 export function navigate() {
-    cy.visit('https://google.com.pk')
+    cy.visit('https://google.com')
   }
   
   export function search(searchText) {
     cy.get('.gLFyf').type(searchText + '{enter}')
   }
-  
-  //trying for fun
