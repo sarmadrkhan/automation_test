@@ -16,7 +16,7 @@ describe('API Requests', () => {
        cy.request('https://emumba-test.herokuapp.com/trend',{timeout:1000}).then((response) => {
             expect(response.status).to.eq(201)
         })
-        cy.request('POST', 'https://emumba-test.herokuapp.com/register', 
+        cy.request('POST', 'https://emumba-test.herokuapp.com/user', 
         { 
             'first_name': 'Ali',
             'last_name': 'Ahmad',
