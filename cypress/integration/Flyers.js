@@ -4,9 +4,11 @@ import {
     navigate,
     range,
   } from '../functions/func'
-
-
-// * Data *
+  import flyer_home from '../page_objects/flyer_home'
+  import new_user from '../page_objects/new_user_form'
+  import existing_user from '../page_objects/existing_user_form'
+  import new_flyer from '../page_objects/new_flyer'
+  // * Data *
 var firstname='Mandeep Dhillon';
 var lastname='Sandy';
 
@@ -14,45 +16,39 @@ var lastname='Sandy';
     it('should do the task 2 of the assingment',()=>{
       cy.fixture('myDataFile.json').then((myDataFile)=>{
         navigate(myDataFile[3].value)
-        cy.get('nav > :nth-child(3) > .MuiButton-label').click()
-        cy.get('form > .MuiBox-root > .MuiTypography-root').click()
-        cy.get('.jss418 > .MuiInputBase-root > .MuiInputBase-input').type(firstname)
-        cy.get('.jss422 > :nth-child(2) > .MuiInputBase-root > .MuiInputBase-input').type(lastname)
-        cy.get('form > :nth-child(2) > .MuiInputBase-root > .MuiInputBase-input').type(myDataFile[4].value)  
-        cy.get(':nth-child(3) > .MuiInputBase-root > .MuiInputBase-input').type(myDataFile[5].value)
-        cy.get(':nth-child(4) > .MuiInputBase-root > .MuiInputBase-input').type(myDataFile[5].value)
-        cy.get('.jss423 > .MuiTypography-root').click() 
-        cy.get(':nth-child(1) > .MuiInputBase-root > .MuiInputBase-input').type(myDataFile[4].value) //username
-        cy.get(':nth-child(2) > .MuiInputBase-root > .MuiInputBase-input').type(myDataFile[5].value) //password
-        cy.get('.MuiButton-label').click() //click on sign in
-        cy.get(':nth-child(2) > .MuiButton-label > a').click() // click on post a flyer
-        //var a = cy.get('.MuiBox-root > .MuiTypography-h6').text()
-        //cy.get('form > :nth-child(1) > .MuiInputBase-root').type(`${a}`)
-
+        flyer_home.clickLoginButton()
+        existing_user.clickNewUserButton()
+        new_user.typerFirstName(firstname)
+        new_user.typeLastName(lastname)
+        new_user.typeEmail(myDataFile[4].value)
+        new_user.typePassword(myDataFile[5].value)
+        new_user.typeConfirmPassword(myDataFile[5].value)
+        new_user.clickExistingUserButton()
+        existing_user.typeEmail(myDataFile[4].value) //username
+        existing_user.typePassword(myDataFile[5].value)
+        existing_user.clickSignInButton()
+        flyer_home.clickPostFlyerButton()
+        // //var a = cy.get('.MuiBox-root > .MuiTypography-h6').text()
+        // //.type(`${a}`)
+        
         //title
-        cy.get('.MuiBox-root > .MuiTypography-h6').then(($title) => { 
-          const t_txt = $title.text()
-          cy.get('form > :nth-child(1) > .MuiInputBase-root').type(`${t_txt}`)
-        })
-
+        new_flyer.copyAndPasteTitle()
+        
         //description
         var genArr=range(1,9,2)
-        cy.wrap(genArr).each((index) => {
-          cy.get(`:nth-child(${index}) > .MuiListItemText-root > .MuiTypography-root`).then(($bullet)=>{
-            const txt = $bullet.text()
-            cy.get('form > :nth-child(2) > .MuiInputBase-root').type(`${txt}`+'{enter}')
-          })
-        })
+        new_flyer.copyAndPasteDescription(genArr)
         //scroll to bottom to view the last line
-        cy.get('form > :nth-child(2) > .MuiInputBase-root > .MuiInputBase-input').scrollTo('bottom')    
+        new_flyer.scrollDown()
+ 
+        new_flyer.typePhone(myDataFile[6].value) //phone number
+        new_flyer.typeAddress(myDataFile[7].value) //address
+        
+        new_flyer.addTag(myDataFile[8].value)  //tag1
+        new_flyer.addTag(myDataFile[9].value)  //tag2
+        new_flyer.addTag(myDataFile[10].value) //tag3
 
-        cy.get('.jss656 > .MuiInputBase-root > .MuiInputBase-input').type(myDataFile[6].value) //phone number
-        cy.get('.jss686 > :nth-child(2) > .MuiInputBase-root > .MuiInputBase-input').type(myDataFile[7].value) //address
-        cy.get('.MuiAutocomplete-root > .MuiFormControl-root > .MuiInputBase-root').type(myDataFile[8].value +'{enter}') //tag1
-        cy.get('.MuiAutocomplete-root > .MuiFormControl-root > .MuiInputBase-root').type(myDataFile[9].value+'{enter}')  //tag2
-        cy.get('.MuiAutocomplete-root > .MuiFormControl-root > .MuiInputBase-root').type(myDataFile[10].value+'{enter}') //tag3
-        cy.get('.MuiButton-contained > .MuiButton-label').click() //post button
-        cy.get(':nth-child(1) > .MuiButton-label > a').click() //home button
+        new_flyer.post()
+        new_flyer.clickHomeButton() //go to home page
         cy.wait(10000)
         cy.reload()
         cy.wait(3000)

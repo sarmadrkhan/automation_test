@@ -5,7 +5,7 @@ workbook.xlsx.readFile('qaautomation.xlsx')
     .then(function() {
         var worksheet = workbook.getWorksheet(3); //series cast sheet
         var row = worksheet.getRow(3);
-        row.getCell(1).value = 'sandy'; // A3's value set to sandy
+        row.getCell(1).value = 'loki'; // A3's value set to desired value
         row.commit();
         return workbook.xlsx.writeFile('qaautomation.xlsx');
     })
