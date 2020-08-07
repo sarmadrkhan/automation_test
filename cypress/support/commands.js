@@ -23,3 +23,16 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+// var Excel = require('exceljs');
+
+// Cypress.Commands.add('updateWS',(oldFile,newFile,sheetNo,rowNo,columnNo,cellValue)=>{
+//     var workbook = new Excel.Workbook();
+//     workbook.xlsx.readFile(oldFile)
+//     .then(function() {
+//         var worksheet = workbook.getWorksheet(sheetNo);
+//         var row = worksheet.getRow(rowNo);
+//         row.getCell(columnNo).value = cellValue; // <column><row>'s value set to cellValue
+//         row.commit();
+//         return workbook.xlsx.writeFile(newFile);
+//     })
+// })
