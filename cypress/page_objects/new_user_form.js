@@ -17,7 +17,7 @@ class new_user_form{
     get existingUserButton(){
         return cy.get('.jss423 > .MuiTypography-root')
     }
-    typerFirstName(myFirstName){
+    typeFirstName(myFirstName){
         this.firstNameField.type(myFirstName)
     }
     typeLastName(myLastName){

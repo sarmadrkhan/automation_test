@@ -10,7 +10,7 @@ describe('API Requests', () => {
         { 
             'first_name': 'Ali',
             'last_name': 'Ahmad',
-            'email': 'newest.ahmad1223@gmail.com',
+            'email': 'unique.id.everytime@gmail.com', //change this email address before running the rest because multiple users cant have same email id
             'password': '12345',
             'confirm_password': '12345'    
         }).then((response) => {
