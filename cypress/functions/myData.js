@@ -1,3 +1,5 @@
+//getting data from input sheet of excel
+
 const fs = require('fs')  //requiring fs in which writeFile is defined
 var xlsx = require('xlsx');
 
@@ -13,8 +15,8 @@ fs.writeFile('cypress/fixtures/myDataFile.json', JSON.stringify(data), (err) => 
     if (err) throw err; 
 })
 
-console.log(data);
+//console.log(data);
 
-//these two return www.google.com
-console.log(data[0].value);
-console.log(wsInput.B2.v);
+// //these two return www.google.com
+// console.log(data[0].value);
+// console.log(wsInput.B2.v);
