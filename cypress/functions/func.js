@@ -12,3 +12,7 @@ export const range = (start, stop, step) => Array.from(
     },
       (_, i) => start + (i * step)
 );
+
+export function randomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
