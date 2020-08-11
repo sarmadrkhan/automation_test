@@ -1,21 +1,21 @@
 class new_user_form{
     get firstNameField(){
-        return cy.get('.jss418 > .MuiInputBase-root > .MuiInputBase-input')
+        return cy.get('[name = "first_name"]')
     }
     get lastNameField(){
-        return cy.get('.jss422 > :nth-child(2) > .MuiInputBase-root > .MuiInputBase-input')
+        return cy.get('[name = "last_name"]')
     }
     get emailField(){
-        return cy.get('form > :nth-child(2) > .MuiInputBase-root > .MuiInputBase-input')
+        return cy.get('[name = "email"]')
     }
     get passwordField(){
-        return cy.get(':nth-child(3) > .MuiInputBase-root > .MuiInputBase-input')
+        return cy.get('[name = "password"]')
     }
     get confirmPasswordField(){
-        return cy.get(':nth-child(4) > .MuiInputBase-root > .MuiInputBase-input')
+        return cy.get('[name = "confirm_password"]')
     }
     get existingUserButton(){
-        return cy.get('.jss423 > .MuiTypography-root')
+        return cy.contains('Already a user')
     }
     typeFirstName(myFirstName){
         this.firstNameField.type(myFirstName)
