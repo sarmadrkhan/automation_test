@@ -22,4 +22,3 @@ For Task 2:
 For Task 3:
     >>run this command in your terminal -> npx cypress open
     >> select APITests.js
-Note: make sure that you change the email address in the POST request in 'cypress/integration/APITests.js' line 15
