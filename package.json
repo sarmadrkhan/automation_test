@@ -16,7 +16,7 @@
     "cypress": "^4.10.0",
     "cypress-commands": "^1.1.0",
     "exceljs": "^4.1.1",
-    "xlsx": "^0.16.4"
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {}
 }
